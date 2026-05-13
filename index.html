@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Philippine Hub</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     LOGIN PAGE
+════════════════════════════════════════════════ -->
+<div id="loginPage" class="page login-page active">
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="noise"></div>
+
+  <button class="theme-toggle" id="themeToggle">
+    <span class="ti sun">☀️</span>
+    <span class="ti moon">🌙</span>
+  </button>
+
+  <main class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="logo-emblem">
+          <div class="le-top"></div><div class="le-bot"></div>
+          <span class="le-star">⭐</span>
+        </div>
+        <div class="logo-words">
+          <span class="lw-ph">Philippine</span>
+          <span class="lw-hub">HUB</span>
+        </div>
+      </div>
+
+      <h1 class="login-headline">Welcome<br/><em>back.</em></h1>
+      <p class="login-sub">Connect with your Kabayan across the archipelago.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field-group" id="fg-email">
+          <div class="field-wrap" id="fw-email">
+            <input type="text" id="fEmail" placeholder=" " autocomplete="username"/>
+            <label for="fEmail">Email or Username</label>
+            <div class="field-line"></div>
+          </div>
+          <p class="f-err" id="err-email"></p>
+        </div>
+
+        <div class="field-group" id="fg-pass">
+          <div class="field-wrap" id="fw-pass">
+            <input type="password" id="fPass" placeholder=" " autocomplete="current-password"/>
+            <label for="fPass">Password</label>
+            <div class="field-line"></div>
+            <button type="button" class="eye-btn" id="eyeBtn">
+              <svg class="eye show-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye hide-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <p class="f-err" id="err-pass"></p>
+        </div>
+
+        <div class="form-row">
+          <label class="remember">
+            <input type="checkbox" id="remMe"/>
+            <span class="chk"></span><span>Remember me</span>
+          </label>
+          <a class="forgot" href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-login" id="btnLogin">
+          <span class="btn-txt">Log In</span>
+          <span class="btn-spin"></span>
+          <div class="btn-sheen"></div>
+        </button>
+        <div class="divider"><span>or</span></div>
+        <button type="button" class="btn-guest">🇵🇭 Continue as Guest</button>
+        <p class="signup-line">New here? <a href="#">Create an account</a></p>
+      </form>
+
+      <div class="login-success" id="loginSuccess">
+        <div class="success-ring">
+          <svg viewBox="0 0 52 52">
+            <circle class="ring-c" cx="26" cy="26" r="24"/>
+            <path class="ring-k" d="M14 26l8 8 16-16"/>
+          </svg>
+        </div>
+        <h2>Mabuhay! 🇵🇭</h2>
+        <p>Taking you to Philippine Hub…</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     HUB PAGE
+════════════════════════════════════════════════ -->
+<div id="hubPage" class="page hub-page">
+  <div class="ph-ribbon"></div>
+
+  <!-- NAVBAR -->
+  <nav class="hub-nav">
+    <div class="hn-left">
+      <div class="hn-logo">
+        <div class="hn-badge-logo">⭐</div>
+        <span class="hn-brand">Philippine <strong>Hub</strong></span>
+      </div>
+      <div class="hn-search">
+        <span>🔍</span>
+        <input type="text" id="globalSearch" placeholder="Search Philippine Hub…" onkeydown="handleSearch(event)"/>
+      </div>
+    </div>
+
+    <div class="hn-tabs">
+      <button class="hn-tab active" data-tab="home"        title="Home">🏠<span class="tab-lbl">Home</span></button>
+      <button class="hn-tab"        data-tab="watch"       title="Watch">📺<span class="tab-lbl">Watch</span></button>
+      <button class="hn-tab"        data-tab="marketplace" title="Marketplace">🛒<span class="tab-lbl">Marketplace</span></button>
+      <button class="hn-tab"        data-tab="groups"      title="Groups">👥<span class="tab-lbl">Groups</span></button>
+      <button class="hn-tab"        data-tab="gaming"      title="Gaming">🎮<span class="tab-lbl">Gaming</span></button>
+    </div>
+
+    <div class="hn-right">
+      <button class="hn-icon" onclick="toggleNotifPanel()">🔔<span class="hn-badge" id="notifBadge">5</span></button>
+      <button class="hn-icon" onclick="toggleMsgPanel()">💬<span class="hn-badge" id="msgBadge">3</span></button>
+      <div class="hn-av" id="hubAv" onclick="toggleProfileMenu()">A</div>
+      <button class="hn-icon" id="hubTheme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Notification panel -->
+  <div class="dropdown-panel" id="notifPanel">
+    <div class="dp-title">Notifications</div>
+    <div class="dp-item unread"><div class="dp-av" style="background:linear-gradient(135deg,#0038A8,#CE1126)">M</div><div><b>Maria Santos</b> reacted to your post. <div class="dp-time">2 min ago</div></div></div>
+    <div class="dp-item unread"><div class="dp-av" style="background:linear-gradient(135deg,#e65100,#FCD116)">R</div><div><b>Ruel Bautista</b> commented on your photo. <div class="dp-time">15 min ago</div></div></div>
+    <div class="dp-item unread"><div class="dp-av" style="background:linear-gradient(135deg,#2e7d32,#66bb6a)">K</div><div><b>Kuya Mark</b> tagged you in a post. <div class="dp-time">1 hr ago</div></div></div>
+    <div class="dp-item"><div class="dp-av" style="background:linear-gradient(135deg,#6a1b9a,#ab47bc)">L</div><div><b>Lola Nena</b> sent you a friend request. <div class="dp-time">3 hrs ago</div></div></div>
+    <div class="dp-item"><div class="dp-av" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">A</div><div><b>Ana Villanueva</b> liked your comment. <div class="dp-time">Yesterday</div></div></div>
+  </div>
+
+  <!-- Message panel -->
+  <div class="dropdown-panel" id="msgPanel">
+    <div class="dp-title">Messages</div>
+    <div class="dp-item unread" onclick="openChat('Maria Santos','linear-gradient(135deg,#0038A8,#CE1126)','M')"><div class="dp-av" style="background:linear-gradient(135deg,#0038A8,#CE1126)">M<div class="ct-dot"></div></div><div><b>Maria Santos</b><div class="dp-time">Kumusta ka na? 😊</div></div></div>
+    <div class="dp-item unread" onclick="openChat('Ruel Bautista','linear-gradient(135deg,#e65100,#FCD116)','R')"><div class="dp-av" style="background:linear-gradient(135deg,#e65100,#FCD116)">R<div class="ct-dot"></div></div><div><b>Ruel Bautista</b><div class="dp-time">Subukan mo yung recipe ko!</div></div></div>
+    <div class="dp-item unread" onclick="openChat('Kuya Mark','linear-gradient(135deg,#2e7d32,#66bb6a)','K')"><div class="dp-av" style="background:linear-gradient(135deg,#2e7d32,#66bb6a)">K<div class="ct-dot"></div></div><div><b>Kuya Mark</b><div class="dp-time">Padala ko na yung kanta 🎸</div></div></div>
+    <div class="dp-item" onclick="openChat('Lola Nena','linear-gradient(135deg,#6a1b9a,#ab47bc)','L')"><div class="dp-av" style="background:linear-gradient(135deg,#6a1b9a,#ab47bc)">L</div><div><b>Lola Nena</b><div class="dp-time">Kumain ka na ba anak?</div></div></div>
+  </div>
+
+  <!-- Profile mini-menu -->
+  <div class="dropdown-panel profile-panel" id="profilePanel">
+    <div class="pp-header">
+      <div class="pp-av">A</div>
+      <div><div class="pp-name">Admin User</div><div class="pp-sub">admin · Philippine Hub</div></div>
+    </div>
+    <div class="dp-divider"></div>
+    <div class="dp-item" onclick="switchTab('home')">🏠 &nbsp;Your Profile Feed</div>
+    <div class="dp-item">⚙️ &nbsp;Settings & Privacy</div>
+    <div class="dp-item">🌙 &nbsp;Display & Accessibility</div>
+    <div class="dp-item" onclick="doLogout()">🚪 &nbsp;Log Out</div>
+  </div>
+
+  <!-- Chat window -->
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-hdr">
+      <div class="chat-av" id="chatAv">M</div>
+      <div class="chat-name" id="chatName">Maria Santos</div>
+      <button class="chat-close" onclick="closeChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Aa…" onkeydown="sendChatMsg(event)"/>
+      <button onclick="sendChatMsg({key:'Enter'})">➤</button>
+    </div>
+  </div>
+
+  <!-- ── TAB CONTENT VIEWS ── -->
+  <div class="hub-grid" id="viewHome">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="hub-left">
+      <div class="hs-item active"><div class="hs-ic" style="background:#E7F3FF">👤</div>Admin User</div>
+      <div class="hs-item" onclick="switchTab('home')"><div class="hs-ic" style="background:#FFECD1">👥</div>Find Friends</div>
+      <div class="hs-item"><div class="hs-ic" style="background:#FFD6D6">📅</div>Events</div>
+      <div class="hs-item" onclick="switchTab('groups')"><div class="hs-ic" style="background:#E8F5E9">🏘️</div>Groups</div>
+      <div class="hs-item" onclick="switchTab('marketplace')"><div class="hs-ic" style="background:#FFF3E0">🛒</div>Marketplace</div>
+      <div class="hs-item" onclick="switchTab('watch')"><div class="hs-ic" style="background:#EDE7F6">📺</div>Watch</div>
+      <div class="hs-item"><div class="hs-ic" style="background:#E3F2FD">💾</div>Saved</div>
+      <div class="hs-div"></div>
+      <div class="hs-label">Your Shortcuts</div>
+      <div class="hs-item" onclick="switchTab('groups')"><div class="hs-ic" style="background:linear-gradient(135deg,#0038A8,#CE1126);color:#fff">🇵🇭</div>Pilipinas Pride</div>
+      <div class="hs-item"><div class="hs-ic" style="background:linear-gradient(135deg,#FCD116,#0038A8);color:#fff">🍜</div>Filipino Food</div>
+      <div class="hs-item"><div class="hs-ic" style="background:linear-gradient(135deg,#CE1126,#FCD116);color:#fff">🎵</div>OPM Music Hub</div>
+      <div class="hs-div"></div>
+      <div class="hs-item hs-logout" id="logoutBtn"><div class="hs-ic" style="background:#FFE4E4">🚪</div>Log Out</div>
+    </aside>
+
+    <!-- FEED -->
+    <main class="hub-feed">
+      <!-- Stories -->
+      <div class="stories-row">
+        <div class="story-card story-add">
+          <div class="add-plus">＋</div>
+          <div class="story-nm" style="color:var(--text-2)">Add Story</div>
+        </div>
+        <div class="story-card" onclick="viewStory('Maria Santos','🌸','Kumusta Pilipinas! 🌺 Ang ganda-ganda ng ating bansa!')" style="--sg:linear-gradient(160deg,#0038A8,#CE1126)">
+          <div class="story-av">🌸</div><div class="story-nm">Maria Santos</div>
+        </div>
+        <div class="story-card" onclick="viewStory('Pedro Reyes','🏄','Surfing sa La Union today! 🏄 Best waves ever!')" style="--sg:linear-gradient(160deg,#FCD116,#0038A8)">
+          <div class="story-av">🏄</div><div class="story-nm">Pedro Reyes</div>
+        </div>
+        <div class="story-card" onclick="viewStory('Lola Nena','👵','Nagluto ako ng sinigang para sa pamilya. Kain na! 🍲')" style="--sg:linear-gradient(160deg,#CE1126,#FCD116)">
+          <div class="story-av">👵</div><div class="story-nm">Lola Nena</div>
+        </div>
+        <div class="story-card" onclick="viewStory('Kuya Mark','🎸','New song dropping tonight! Stay tuned mga pare! 🎶')" style="--sg:linear-gradient(160deg,#1a237e,#43a047)">
+          <div class="story-av">🎸</div><div class="story-nm">Kuya Mark</div>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <div class="composer">
+        <div class="comp-top">
+          <div class="comp-av">A</div>
+          <div class="comp-ph" onclick="openComposer()">What's on your mind, Admin?</div>
+        </div>
+        <div class="comp-div"></div>
+        <div class="comp-acts">
+          <button class="comp-act" onclick="openComposer('video')">🎥 <span>Live video</span></button>
+          <button class="comp-act" onclick="openComposer('photo')">🖼️ <span>Photo/Video</span></button>
+          <button class="comp-act" onclick="openComposer('feeling')">😊 <span>Feeling</span></button>
+        </div>
+      </div>
+
+      <!-- POST 1 -->
+      <div class="post">
+        <div class="post-hdr">
+          <div class="post-av" style="background:linear-gradient(135deg,#0038A8,#CE1126)">M</div>
+          <div class="post-info">
+            <div class="post-nm">Maria Santos <span class="ptag">🇵🇭 Maynila</span></div>
+            <div class="post-ts">⏱ 2 hours ago · 🌍</div>
+          </div>
+          <button class="post-more-btn" onclick="togglePostMenu(this)">⋯</button>
+          <div class="post-menu">
+            <div class="pm-item">🔖 Save post</div>
+            <div class="pm-item">🚫 Hide post</div>
+            <div class="pm-item">⚠️ Report</div>
+          </div>
+        </div>
+        <div class="post-body">Maligayang araw sa lahat! 🌺 Just arrived at Intramuros — the history here is breathtaking. Every cobblestone tells a story of our resilience. <strong>#Pilipinas #IntramurosManila</strong></div>
+        <div class="post-img" style="background:linear-gradient(135deg,#0038A8 0%,#8B0000 50%,#FCD116 100%)">🏯</div>
+        <div class="post-react-bar">
+          <span class="react-emojis" onclick="showReactors()">👍❤️😮 <u>Ruel, Ana, at 124 iba pa</u></span>
+          <span>48 comments · 12 shares</span>
+        </div>
+        <div class="post-acts">
+          <button class="pab" id="lk1" onclick="toggleLike('lk1',this)">👍 Like</button>
+          <button class="pab" onclick="focusCmt('c1')">💬 Comment</button>
+          <button class="pab" onclick="sharePost(this)">↗️ Share</button>
+        </div>
+        <div class="cmt-sec">
+          <div class="cmt-item">
+            <div class="cmt-av" style="background:linear-gradient(135deg,#FCD116,#CE1126)">P</div>
+            <div class="cmt-bub"><b>Pedro Reyes</b><br/>Grabe ang ganda dyan! 😭❤️</div>
+          </div>
+          <div class="cmt-row">
+            <div class="cmt-av">A</div>
+            <div class="cmt-iw"><input type="text" id="c1" placeholder="Write a comment…" onkeydown="postCmt(event,'ca1')"/><span onclick="addEmoji('c1')">😊</span></div>
+          </div>
+          <div id="ca1"></div>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="post">
+        <div class="post-hdr">
+          <div class="post-av" style="background:linear-gradient(135deg,#e65100,#FCD116)">R</div>
+          <div class="post-info">
+            <div class="post-nm">Ruel Bautista <span class="ptag" style="background:#b71c1c">🍜 Food Vlogger</span></div>
+            <div class="post-ts">⏱ 5 hours ago · 🌍</div>
+          </div>
+          <button class="post-more-btn" onclick="togglePostMenu(this)">⋯</button>
+          <div class="post-menu">
+            <div class="pm-item">🔖 Save post</div>
+            <div class="pm-item">🚫 Hide post</div>
+            <div class="pm-item">⚠️ Report</div>
+          </div>
+        </div>
+        <div class="post-body">Niluto ko ng Adobo para sa buong pamilya ngayon! The secret? Coconut vinegar from Batangas at sariling toyo ng lola 🤤 <strong>#AdoboNation #PinoyKitchen</strong></div>
+        <div class="post-img" style="background:linear-gradient(135deg,#bf360c,#e65100 50%,#FCD116 100%)">🍲</div>
+        <div class="post-react-bar"><span>😍❤️👍 312 reactions</span><span>97 comments · 56 shares</span></div>
+        <div class="post-acts">
+          <button class="pab liked" id="lk2" onclick="toggleLike('lk2',this)">👍 Liked</button>
+          <button class="pab" onclick="focusCmt('c2')">💬 Comment</button>
+          <button class="pab" onclick="sharePost(this)">↗️ Share</button>
+        </div>
+        <div class="cmt-sec">
+          <div class="cmt-row">
+            <div class="cmt-av">A</div>
+            <div class="cmt-iw"><input type="text" id="c2" placeholder="Write a comment…" onkeydown="postCmt(event,'ca2')"/><span onclick="addEmoji('c2')">😊</span></div>
+          </div>
+          <div id="ca2"></div>
+        </div>
+      </div>
+
+      <!-- POST 3 -->
+      <div class="post">
+        <div class="post-hdr">
+          <div class="post-av" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">A</div>
+          <div class="post-info">
+            <div class="post-nm">Ana Villanueva</div>
+            <div class="post-ts">⏱ Yesterday · 🌍</div>
+          </div>
+          <button class="post-more-btn" onclick="togglePostMenu(this)">⋯</button>
+          <div class="post-menu">
+            <div class="pm-item">🔖 Save post</div>
+            <div class="pm-item">🚫 Hide post</div>
+          </div>
+        </div>
+        <div class="post-body quote-body">"Ang hindi marunong lumingon sa pinanggalingan ay hindi makararating sa paroroonan."<br/><small>— José Rizal 🇵🇭</small></div>
+        <div class="post-react-bar"><span>❤️👍😊 612 reactions</span><span>203 shares</span></div>
+        <div class="post-acts">
+          <button class="pab" id="lk3" onclick="toggleLike('lk3',this)">👍 Like</button>
+          <button class="pab" onclick="focusCmt('c3')">💬 Comment</button>
+          <button class="pab" onclick="sharePost(this)">↗️ Share</button>
+        </div>
+        <div class="cmt-sec">
+          <div class="cmt-row">
+            <div class="cmt-av">A</div>
+            <div class="cmt-iw"><input type="text" id="c3" placeholder="Write a comment…" onkeydown="postCmt(event,'ca3')"/><span onclick="addEmoji('c3')">😊</span></div>
+          </div>
+          <div id="ca3"></div>
+        </div>
+      </div>
+
+      <!-- POST 4 -->
+      <div class="post">
+        <div class="post-hdr">
+          <div class="post-av" style="background:linear-gradient(135deg,#2e7d32,#66bb6a)">K</div>
+          <div class="post-info">
+            <div class="post-nm">Kuya Mark Dela Cruz <span class="ptag" style="background:#2e7d32">🎵 OPM</span></div>
+            <div class="post-ts">⏱ 2 days ago · 🌍</div>
+          </div>
+          <button class="post-more-btn" onclick="togglePostMenu(this)">⋯</button>
+          <div class="post-menu">
+            <div class="pm-item">🔖 Save post</div>
+            <div class="pm-item">🚫 Hide post</div>
+            <div class="pm-item">⚠️ Report</div>
+          </div>
+        </div>
+        <div class="post-body">Bagong kanta na! 🎸 "Liwanag sa Dilim" — inspired by all the everyday heroes ng Pilipinas. Salamat sa support ninyo 🙏 <strong>#OPM #FilipinoMusic</strong></div>
+        <div class="post-img" style="background:linear-gradient(135deg,#1b5e20,#0038A8)">🎸🎶</div>
+        <div class="post-react-bar"><span>❤️🎵👍 1.2K reactions</span><span>445 comments · 238 shares</span></div>
+        <div class="post-acts">
+          <button class="pab" id="lk4" onclick="toggleLike('lk4',this)">👍 Like</button>
+          <button class="pab" onclick="focusCmt('c4')">💬 Comment</button>
+          <button class="pab" onclick="sharePost(this)">↗️ Share</button>
+        </div>
+        <div class="cmt-sec">
+          <div class="cmt-row">
+            <div class="cmt-av">A</div>
+            <div class="cmt-iw"><input type="text" id="c4" placeholder="Write a comment…" onkeydown="postCmt(event,'ca4')"/><span onclick="addEmoji('c4')">😊</span></div>
+          </div>
+          <div id="ca4"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="hub-right">
+      <div class="widget">
+        <div class="wt-title">🇵🇭 Trending in Philippines</div>
+        <div class="trend" onclick="switchTab('home')"><div class="tr-tag">Politics · Trending</div><div class="tr-nm">#BagongPilipinas</div><div class="tr-ct">142K posts</div></div>
+        <div class="trend" onclick="switchTab('home')"><div class="tr-tag">Food · Trending</div><div class="tr-nm">#AdoboNation</div><div class="tr-ct">89K posts</div></div>
+        <div class="trend" onclick="switchTab('home')"><div class="tr-tag">Music · Trending</div><div class="tr-nm">#OPMForever</div><div class="tr-ct">56K posts</div></div>
+        <div class="trend" onclick="switchTab('home')"><div class="tr-tag">Travel · Trending</div><div class="tr-nm">#VisitPilipinas</div><div class="tr-ct">38K posts</div></div>
+        <div class="trend" onclick="switchTab('home')"><div class="tr-tag">Sports · Trending</div><div class="tr-nm">#PilipinasPride</div><div class="tr-ct">22K posts</div></div>
+      </div>
+      <div class="wt-title" style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px 4px"><span>Mga Kaibigan</span><a href="#" style="font-size:13px;color:var(--accent2);font-weight:600">See all</a></div>
+      <div class="ct-item" onclick="openChat('Maria Santos','linear-gradient(135deg,#0038A8,#CE1126)','M')"><div class="ct-av" style="background:linear-gradient(135deg,#0038A8,#CE1126)">M<div class="ct-dot"></div></div><span>Maria Santos</span></div>
+      <div class="ct-item" onclick="openChat('Ruel Bautista','linear-gradient(135deg,#e65100,#FCD116)','R')"><div class="ct-av" style="background:linear-gradient(135deg,#e65100,#FCD116)">R<div class="ct-dot"></div></div><span>Ruel Bautista</span></div>
+      <div class="ct-item" onclick="openChat('Kuya Mark','linear-gradient(135deg,#2e7d32,#66bb6a)','K')"><div class="ct-av" style="background:linear-gradient(135deg,#2e7d32,#66bb6a)">K<div class="ct-dot"></div></div><span>Kuya Mark</span></div>
+      <div class="ct-item" onclick="openChat('Lola Nena','linear-gradient(135deg,#6a1b9a,#ab47bc)','L')"><div class="ct-av" style="background:linear-gradient(135deg,#6a1b9a,#ab47bc)">L</div><span>Lola Nena</span></div>
+      <div class="ct-item" onclick="openChat('Ana Villanueva','linear-gradient(135deg,#1565C0,#42A5F5)','A')"><div class="ct-av" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">A</div><span>Ana Villanueva</span></div>
+      <div class="ct-item" onclick="openChat('Bro Dante','linear-gradient(135deg,#c62828,#ef5350)','B')"><div class="ct-av" style="background:linear-gradient(135deg,#c62828,#ef5350)">B<div class="ct-dot"></div></div><span>Bro Dante</span></div>
+      <div style="padding:16px 12px;font-size:12px;color:var(--text-2);line-height:2.2">Privacy · Terms · Advertising · Cookies<br/><strong>Philippine Hub</strong> © 2025</div>
+    </aside>
+  </div><!-- /viewHome -->
+
+
+  <!-- ══ WATCH TAB ══ -->
+  <div class="tab-view" id="viewWatch">
+    <div class="tv-header"><h2>📺 Watch</h2><p>Discover videos from around Pilipinas</p></div>
+    <div class="tv-search-bar"><input type="text" placeholder="🔍  Search videos…"/></div>
+    <div class="tv-section-title">🔥 Trending Now</div>
+    <div class="video-grid">
+      <div class="video-card" onclick="playVideo(this,'Intramuros Walking Tour 🏯','Manuel Cruz')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#0038A8,#FCD116)">🏯<div class="vc-play">▶</div><div class="vc-dur">12:34</div></div>
+        <div class="vc-info"><div class="vc-title">Intramuros Walking Tour 🏯</div><div class="vc-meta">Manuel Cruz · 245K views · 2 days ago</div></div>
+      </div>
+      <div class="video-card" onclick="playVideo(this,'How to Cook Authentic Adobo 🍲','Chef Ruel')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#bf360c,#FCD116)">🍲<div class="vc-play">▶</div><div class="vc-dur">8:22</div></div>
+        <div class="vc-info"><div class="vc-title">How to Cook Authentic Adobo 🍲</div><div class="vc-meta">Chef Ruel · 1.2M views · 5 days ago</div></div>
+      </div>
+      <div class="video-card" onclick="playVideo(this,'Surfing in La Union 🏄','Pedro Reyes')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#0288d1,#26c6da)">🌊<div class="vc-play">▶</div><div class="vc-dur">6:15</div></div>
+        <div class="vc-info"><div class="vc-title">Surfing in La Union 🏄</div><div class="vc-meta">Pedro Reyes · 89K views · 1 week ago</div></div>
+      </div>
+      <div class="video-card" onclick="playVideo(this,'Liwanag sa Dilim — Live Performance 🎸','Kuya Mark')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#1b5e20,#43a047)">🎸<div class="vc-play">▶</div><div class="vc-dur">4:51</div></div>
+        <div class="vc-info"><div class="vc-title">Liwanag sa Dilim — Live 🎸</div><div class="vc-meta">Kuya Mark · 3.4M views · 2 weeks ago</div></div>
+      </div>
+      <div class="video-card" onclick="playVideo(this,'Fiesta sa Cebu 🎉','Travel PH')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#CE1126,#FCD116)">🎉<div class="vc-play">▶</div><div class="vc-dur">15:07</div></div>
+        <div class="vc-info"><div class="vc-title">Fiesta sa Cebu 🎉</div><div class="vc-meta">Travel PH · 567K views · 3 weeks ago</div></div>
+      </div>
+      <div class="video-card" onclick="playVideo(this,'Batanes: Hidden Paradise 🌿','Lakbay Pilipinas')">
+        <div class="vc-thumb" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">🌿<div class="vc-play">▶</div><div class="vc-dur">20:44</div></div>
+        <div class="vc-info"><div class="vc-title">Batanes: Hidden Paradise 🌿</div><div class="vc-meta">Lakbay Pilipinas · 2.1M views · 1 month ago</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MARKETPLACE TAB ══ -->
+  <div class="tab-view" id="viewMarketplace">
+    <div class="tv-header"><h2>🛒 Marketplace</h2><p>Buy and sell in your community</p></div>
+    <div class="tv-search-bar"><input type="text" placeholder="🔍  Search items for sale…"/></div>
+    <div class="mkt-cats">
+      <div class="mkt-cat active">All</div>
+      <div class="mkt-cat">🏠 Home</div>
+      <div class="mkt-cat">👗 Fashion</div>
+      <div class="mkt-cat">📱 Electronics</div>
+      <div class="mkt-cat">🍜 Food</div>
+      <div class="mkt-cat">🚗 Vehicles</div>
+      <div class="mkt-cat">🌿 Garden</div>
+    </div>
+    <div class="tv-section-title">🏷️ Featured Listings</div>
+    <div class="mkt-grid">
+      <div class="mkt-card" onclick="buyItem(this,'Handwoven Banig Mat','₱850')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#FCD116,#e65100)">🌾</div>
+        <div class="mkt-price">₱850</div>
+        <div class="mkt-name">Handwoven Banig Mat</div>
+        <div class="mkt-loc">📍 Leyte</div>
+      </div>
+      <div class="mkt-card" onclick="buyItem(this,'Buko Pie (12 pcs)','₱320')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#a5d6a7,#388e3c)">🥥</div>
+        <div class="mkt-price">₱320</div>
+        <div class="mkt-name">Buko Pie (12 pcs)</div>
+        <div class="mkt-loc">📍 Los Baños, Laguna</div>
+      </div>
+      <div class="mkt-card" onclick="buyItem(this,'Barong Tagalog (XL)','₱2,500')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#e3f2fd,#90caf9)">👔</div>
+        <div class="mkt-price">₱2,500</div>
+        <div class="mkt-name">Barong Tagalog (XL)</div>
+        <div class="mkt-loc">📍 Quezon City</div>
+      </div>
+      <div class="mkt-card" onclick="buyItem(this,'Samsung Galaxy A55','₱18,999')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#37474f,#78909c)">📱</div>
+        <div class="mkt-price">₱18,999</div>
+        <div class="mkt-name">Samsung Galaxy A55</div>
+        <div class="mkt-loc">📍 Makati</div>
+      </div>
+      <div class="mkt-card" onclick="buyItem(this,'Lechon de Leche (whole)','₱7,500')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#bf360c,#ff7043)">🐷</div>
+        <div class="mkt-price">₱7,500</div>
+        <div class="mkt-name">Lechon de Leche (whole)</div>
+        <div class="mkt-loc">📍 Cebu City</div>
+      </div>
+      <div class="mkt-card" onclick="buyItem(this,'Vintage Jeepney Art','₱1,200')">
+        <div class="mkt-img" style="background:linear-gradient(135deg,#CE1126,#0038A8)">🚌</div>
+        <div class="mkt-price">₱1,200</div>
+        <div class="mkt-name">Vintage Jeepney Art</div>
+        <div class="mkt-loc">📍 Manila</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ GROUPS TAB ══ -->
+  <div class="tab-view" id="viewGroups">
+    <div class="tv-header"><h2>👥 Groups</h2><p>Find communities that matter to you</p></div>
+    <div class="tv-search-bar"><input type="text" placeholder="🔍  Search groups…"/></div>
+    <div class="tv-section-title">⭐ Your Groups</div>
+    <div class="grp-list">
+      <div class="grp-card" onclick="openGroup('Pilipinas Pride 🇵🇭')">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#0038A8,#CE1126)">🇵🇭</div>
+        <div class="grp-info"><div class="grp-name">Pilipinas Pride 🇵🇭</div><div class="grp-meta">245K members · Public Group</div></div>
+        <button class="grp-btn joined">✓ Joined</button>
+      </div>
+      <div class="grp-card" onclick="openGroup('Filipino Food Lovers 🍜')">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#e65100,#FCD116)">🍜</div>
+        <div class="grp-info"><div class="grp-name">Filipino Food Lovers 🍜</div><div class="grp-meta">189K members · Public Group</div></div>
+        <button class="grp-btn joined">✓ Joined</button>
+      </div>
+      <div class="grp-card" onclick="openGroup('OPM Music Hub 🎵')">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#CE1126,#FCD116)">🎵</div>
+        <div class="grp-info"><div class="grp-name">OPM Music Hub 🎵</div><div class="grp-meta">312K members · Public Group</div></div>
+        <button class="grp-btn joined">✓ Joined</button>
+      </div>
+    </div>
+    <div class="tv-section-title" style="margin-top:24px">💡 Suggested for You</div>
+    <div class="grp-list">
+      <div class="grp-card">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#0288d1,#26c6da)">🏝️</div>
+        <div class="grp-info"><div class="grp-name">Lakbay Pilipinas 🏝️</div><div class="grp-meta">98K members · Public Group</div></div>
+        <button class="grp-btn" onclick="joinGroup(this)">＋ Join</button>
+      </div>
+      <div class="grp-card">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#4a148c,#9c27b0)">🎨</div>
+        <div class="grp-info"><div class="grp-name">Filipino Artists United 🎨</div><div class="grp-meta">54K members · Public Group</div></div>
+        <button class="grp-btn" onclick="joinGroup(this)">＋ Join</button>
+      </div>
+      <div class="grp-card">
+        <div class="grp-icon" style="background:linear-gradient(135deg,#1b5e20,#66bb6a)">🌾</div>
+        <div class="grp-info"><div class="grp-name">Magsasaka ng Pilipinas 🌾</div><div class="grp-meta">37K members · Private Group</div></div>
+        <button class="grp-btn" onclick="joinGroup(this)">＋ Join</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ GAMING TAB ══ -->
+  <div class="tab-view" id="viewGaming">
+    <div class="tv-header"><h2>🎮 Gaming</h2><p>Play, compete & connect with Filipino gamers</p></div>
+    <div class="tv-section-title">🔥 Popular Games</div>
+    <div class="game-grid">
+      <div class="game-card" onclick="playGame('Mobile Legends')">
+        <div class="game-img" style="background:linear-gradient(135deg,#1a237e,#7b1fa2)">⚔️</div>
+        <div class="game-name">Mobile Legends</div>
+        <div class="game-meta">12.4M PH players</div>
+        <button class="game-btn">▶ Play</button>
+      </div>
+      <div class="game-card" onclick="playGame('Clash of Clans')">
+        <div class="game-img" style="background:linear-gradient(135deg,#e65100,#ffa000)">🏰</div>
+        <div class="game-name">Clash of Clans</div>
+        <div class="game-meta">8.1M PH players</div>
+        <button class="game-btn">▶ Play</button>
+      </div>
+      <div class="game-card" onclick="playGame('Call of Duty Mobile')">
+        <div class="game-img" style="background:linear-gradient(135deg,#263238,#546e7a)">🔫</div>
+        <div class="game-name">COD Mobile</div>
+        <div class="game-meta">6.8M PH players</div>
+        <button class="game-btn">▶ Play</button>
+      </div>
+      <div class="game-card" onclick="playGame('Free Fire')">
+        <div class="game-img" style="background:linear-gradient(135deg,#bf360c,#ff7043)">🔥</div>
+        <div class="game-name">Free Fire</div>
+        <div class="game-meta">9.3M PH players</div>
+        <button class="game-btn">▶ Play</button>
+      </div>
+    </div>
+    <div class="tv-section-title" style="margin-top:24px">🏆 PH Gaming Leaderboard</div>
+    <div class="leaderboard">
+      <div class="lb-item gold">  <span class="lb-rank">🥇</span><div class="lb-av" style="background:linear-gradient(135deg,#FCD116,#e65100)">X</div><span class="lb-name">xXDarkLord_PH</span><span class="lb-score">98,430 pts</span></div>
+      <div class="lb-item silver"><span class="lb-rank">🥈</span><div class="lb-av" style="background:linear-gradient(135deg,#90a4ae,#546e7a)">S</div><span class="lb-name">Sniper_Batangas</span><span class="lb-score">87,210 pts</span></div>
+      <div class="lb-item bronze"><span class="lb-rank">🥉</span><div class="lb-av" style="background:linear-gradient(135deg,#a1887f,#6d4c41)">M</div><span class="lb-name">MLQueen_Cebu</span><span class="lb-score">76,540 pts</span></div>
+      <div class="lb-item"><span class="lb-rank">4</span><div class="lb-av" style="background:linear-gradient(135deg,#0038A8,#CE1126)">A</div><span class="lb-name">Admin User (You)</span><span class="lb-score">55,100 pts</span></div>
+      <div class="lb-item"><span class="lb-rank">5</span><div class="lb-av" style="background:linear-gradient(135deg,#1b5e20,#66bb6a)">P</div><span class="lb-name">ProGamer_Manila</span><span class="lb-score">49,880 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Story viewer modal -->
+  <div class="modal-overlay" id="storyModal" onclick="closeModal('storyModal')">
+    <div class="story-modal" onclick="event.stopPropagation()">
+      <div class="sm-av" id="smAv">🌸</div>
+      <div class="sm-name" id="smName">Maria Santos</div>
+      <div class="sm-text" id="smText"></div>
+      <button class="sm-close" onclick="closeModal('storyModal')">✕</button>
+    </div>
+  </div>
+
+  <!-- Reactors modal -->
+  <div class="modal-overlay" id="reactModal" onclick="closeModal('reactModal')">
+    <div class="react-modal" onclick="event.stopPropagation()">
+      <div class="rm-title">People who reacted</div>
+      <div class="rm-list">
+        <div class="rm-item"><div class="rm-av" style="background:linear-gradient(135deg,#FCD116,#CE1126)">P</div>Pedro Reyes <span>👍</span></div>
+        <div class="rm-item"><div class="rm-av" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">A</div>Ana Villanueva <span>❤️</span></div>
+        <div class="rm-item"><div class="rm-av" style="background:linear-gradient(135deg,#2e7d32,#66bb6a)">K</div>Kuya Mark <span>😮</span></div>
+      </div>
+      <button onclick="closeModal('reactModal')" style="margin-top:12px;width:100%;padding:10px;border-radius:8px;background:var(--bg-hover);font-weight:600;cursor:pointer">Close</button>
+    </div>
+  </div>
+
+</div><!-- /hubPage -->
+
+<!-- Emoji picker -->
+<div class="emoji-picker" id="emojiPicker">
+  <span onclick="pickEmoji('😊')">😊</span><span onclick="pickEmoji('❤️')">❤️</span>
+  <span onclick="pickEmoji('😂')">😂</span><span onclick="pickEmoji('🔥')">🔥</span>
+  <span onclick="pickEmoji('🇵🇭')">🇵🇭</span><span onclick="pickEmoji('🙏')">🙏</span>
+  <span onclick="pickEmoji('👍')">👍</span><span onclick="pickEmoji('😍')">😍</span>
+  <span onclick="pickEmoji('🎉')">🎉</span><span onclick="pickEmoji('😭')">😭</span>
+  <span onclick="pickEmoji('✨')">✨</span><span onclick="pickEmoji('💪')">💪</span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
